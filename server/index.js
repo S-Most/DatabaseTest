@@ -17,10 +17,13 @@ app.get("/", (req, res) => {
 });
 
 app.get("/messages", (req, res) => {
-    // display all the messages
     myMessages.find().then((myMessage) => {
         res.json(myMessage);
     });
+});
+
+app.get("/remove", (req, res) => {
+    myMessages.remove();
 });
 
 app.post("/messages", (req, res) => {

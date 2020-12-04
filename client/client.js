@@ -12,9 +12,7 @@ form.addEventListener("submit", (event) => {
     const formData = new FormData(form);
     const name = formData.get("name");
     const message = formData.get("message");
-
     const toShare = { name, message };
-    console.log(toShare);
 
     form.reset();
     form.style.display = "none";
@@ -29,7 +27,6 @@ form.addEventListener("submit", (event) => {
     })
         .then((response) => response.json())
         .then((createdMessage) => {
-            console.log(createdMessage);
             listAllMessages();
             form.style.display = "flex";
             loading.style.display = "none";
@@ -41,7 +38,6 @@ function listAllMessages() {
     fetch(API_URL)
         .then((response) => response.json())
         .then((myMessages) => {
-            console.log(myMessages);
             myMessages.reverse();
             myMessages.forEach((myMessage) => {
                 const div = document.createElement("div");
