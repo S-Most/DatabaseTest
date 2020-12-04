@@ -1,0 +1,106 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"] {
+    width: 60%;
+    max-width: 800px;
+}
+
+input[type="submit"] {
+    padding: 0.5rem;
+    background: coral;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    margin-bottom: 3rem;
+}
+
+input[type="submit"]:hover {
+    padding: 0.5rem;
+    background: rgb(237, 191, 174);
+    color: coral;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.loading {
+    display: none;
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    max-width: 800px;
+    /* width: fit-content; */
+    overflow: hidden;
+}
+
+.mes {
+    width: 70%;
+    max-width: 500px;
+    height: 8rem;
+    border: 2px solid coral;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.mes-title {
+    padding: 0.5rem 2rem;
+    background: coral;
+    color: white;
+    font-size: 1.2rem;
+    max-width: 100%;
+    text-align: center;
+}
+
+.mes p {
+    padding: 0.5rem;
+    max-width: 90%;
+}
+
+.mes small {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    font-size: 0.5rem;
+    text-align: right;
+}
