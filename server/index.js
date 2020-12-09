@@ -1,11 +1,16 @@
 const express = require("express");
 const cors = require("cors");
 const monk = require("monk");
+const Filter = require("bad-words");
+const rateLimit = require("express-rate-limit");
 
 const app = express();
 
-const db = monk("localhost/messages");
+const db = monk(process.env.MONGO_URI || "localhost/messages");
 const myMessages = db.get("myMessages");
+const filter = new Filter();
+
+app.set("trust proxy", 1);
 
 app.use(cors());
 app.use(express.json());
@@ -26,11 +31,18 @@ app.get("/remove", (req, res) => {
     myMessages.remove();
 });
 
+app.use(
+    rateLimit({
+        windowMs: 15 * 1000, // 15 seconds
+        max: 1,
+    })
+);
+
 app.post("/messages", (req, res) => {
     if (isValid(req.body)) {
         const myMessage = {
-            name: req.body.name.toString(),
-            message: req.body.message.toString(),
+            name: filter.clean(req.body.name.toString()),
+            message: filter.clean(req.body.message.toString()),
             created: new Date(),
         };
         console.log(myMessage);

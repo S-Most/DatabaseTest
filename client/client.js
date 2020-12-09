@@ -27,9 +27,11 @@ form.addEventListener("submit", (event) => {
     })
         .then((response) => response.json())
         .then((createdMessage) => {
-            listAllMessages();
-            form.style.display = "flex";
+            setTimeout(() => {
+                form.style.display = "flex";
+            }, 3000);
             loading.style.display = "none";
+            listAllMessages();
         });
 });
 
